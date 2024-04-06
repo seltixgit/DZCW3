@@ -12,3 +12,8 @@ def filter_operations(data):
         if operation.get('state') == 'EXECUTED':
             filtered_list.append(operation)
     return filtered_list
+
+
+def sort_operations(operations_data: list[dict]) -> list[dict]:
+    sorted_list = sorted(operations_data, key=lambda x: x['date'], reverse=True)
+    return sorted_list

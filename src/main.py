@@ -1,15 +1,16 @@
 import json
+import os.path
 import datetime as dt
 
 
 def open_json_file(file_path):
-    with open(file_path, encoding='utf-8') as f:
+    with open(os.path.abspath(file_path), encoding='utf-8') as f:
         return json.load(f)
 
 
-def filter_operations(data):
+def filter_operations(operations_data):
     filtered_list = []
-    for operation in data:
+    for operation in operations_data:
         if operation.get('state') == 'EXECUTED':
             filtered_list.append(operation)
     return filtered_list
@@ -54,6 +55,6 @@ operations = filter_operations(data)
 operations = sort_operations(operations)[:5]
 for i in operations:
     print(format_date(i), i["description"])
-    print(mask_operation_from(i), mask_operation_to(i))
+    print(mask_operation_from(i), '->', mask_operation_to(i))
     print(i["operationAmount"]['amount'], i["operationAmount"]["currency"]["name"])
     print()

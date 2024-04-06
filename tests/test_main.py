@@ -1,5 +1,5 @@
 import pytest
-from src.main import open_json_file, filter_operations
+from src.main import open_json_file, filter_operations, sort_operations
 
 
 @pytest.fixture
@@ -15,3 +15,8 @@ def test_open_json_file():
 def test_filter_operations(test_data):
     assert len(filter_operations(test_data)) == 2
     assert filter_operations(test_data) == [{'state': 'EXECUTED'}, {'state': 'EXECUTED'}]
+
+
+def test_sort_operations():
+    operations_data = []
+    assert sort_operations(operations_data) == []

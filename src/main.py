@@ -1,6 +1,9 @@
 import json
 import os.path
 import datetime as dt
+from config import ROOT_DIR
+
+PATH_OPERATIONS = os.path.join(ROOT_DIR, 'src', 'operations.json')
 
 
 def open_json_file(file_path):
@@ -50,7 +53,7 @@ def format_date(operation):
     return dt_time.strftime("%d.%m.%Y")
 
 
-data = open_json_file('operations.json')
+data = open_json_file(PATH_OPERATIONS)
 operations = filter_operations(data)
 operations = sort_operations(operations)[:5]
 for i in operations:
